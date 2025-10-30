@@ -1,6 +1,6 @@
 // src/services/taskService.js
 
-export async function crearTarea(task) {
+/*export async function crearTarea(task) {
   try {
     const response = await fetch("/api/tasks", {
       method: "POST",
@@ -20,4 +20,16 @@ export async function crearTarea(task) {
     console.error(" Error al crear tarea:", error.message);
     throw error;
   }
+}*/
+
+try {
+  const response = await fetch('/api/tasks', {
+    method: 'POST',
+    body: JSON.stringify(task),
+  });
+  const data = await response.json();
+  setTasks([...tasks, data]);
+} catch (error) {
+  console.error('Error al crear la tarea:', error);
 }
+
